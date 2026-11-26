@@ -81,6 +81,8 @@ Python · Apache Airflow 2.10 (TaskFlow API, LocalExecutor) · PostgreSQL 16 · 
 - 마트 위에 BI 대시보드(Metabase 등) 추가 예정
 - DB가 UTC라 적재 시각(`loaded_at`)과 품질 점검의 "24시간" 기준이 한국 시각과 9시간 어긋남 → `TIMESTAMPTZ` 또는 DB 시간대 설정으로 개선 예정
 - 로컬 PC에서 실행해 PC가 꺼진 주말 동안 수집 공백(약 63시간) 발생 → 상시 서버·중단 알림 필요
+  - 적용: 재부팅 후 자동 재시작(postgres `restart: unless-stopped`, 웹서버 시작 시 남은 PID 파일 정리)
+  - 남은 한계: PC가 꺼져 있는 동안의 공백은 여전히 발생
 - "갱신 멈춤" 기준(24시간)이 휴관일까지 멈춤으로 잡음 → 기준 조정 필요
 
 ## 관련 글 (velog)
