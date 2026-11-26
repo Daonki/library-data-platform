@@ -43,7 +43,7 @@ PostgreSQL (dw)
 | 키 후보 | 고유한 값 개수 (도서관 234건 기준) |
 |---|---|
 | `pblibId` | 21 |
-| `stdgCd`(지자체 코드) + `pblibId` | 233 |
+| `stdgCd`(지자체 코드) + `pblibId` | 234 |
 
 그래서 도서관은 `(stdgCd, pblibId)`, 열람실은 `(stdgCd, pblibId, rdrmId)`를 키로 다시 설계했습니다. 필드 이름만 보고 키를 정하지 않고, **실제 데이터에서 유일성을 확인**해야 한다는 걸 배웠습니다.
 
@@ -79,3 +79,13 @@ Python · Apache Airflow 2.10 (TaskFlow API, LocalExecutor) · PostgreSQL 16 · 
 - 같은 불량 행이 실행마다 다시 기록됨 → 같은 행·같은 사유는 하루 한 번만 기록하도록 개선 예정
 - 시간대별 분석은 며칠 이상 데이터가 쌓여야 의미가 있음
 - 마트 위에 BI 대시보드(Metabase 등) 추가 예정
+- DB가 UTC라 적재 시각(`loaded_at`)과 품질 점검의 "24시간" 기준이 한국 시각과 9시간 어긋남 → `TIMESTAMPTZ` 또는 DB 시간대 설정으로 개선 예정
+- 로컬 PC에서 실행해 PC가 꺼진 주말 동안 수집 공백(약 63시간) 발생 → 상시 서버·중단 알림 필요
+- "갱신 멈춤" 기준(24시간)이 휴관일까지 멈춤으로 잡음 → 기준 조정 필요
+
+## 관련 글 (velog)
+
+1. [Airflow를 활용해보자](https://velog.io/@daondakara/Airflow%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%B4%EB%B3%B4%EC%9E%90) — Airflow 개념, 만든 것, Docker Compose, DAG 구성
+2. [Airflow를 활용해보자 2 — 재시도부터 증분 적재까지](https://velog.io/@daondakara/Airflow%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%B4%EB%B3%B4%EC%9E%902%EC%9E%AC%EC%8B%9C%EB%8F%84%EB%B6%80%ED%84%B0-%EC%A6%9D%EB%B6%84-%EC%A0%81%EC%9E%AC%EA%B9%8C%EC%A7%80) — 재시도, catchup, 워터마크·중복 방지, 63시간 공백
+3. [Airflow를 활용해보자 3](https://velog.io/@daondakara/Airflow%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%B4%EB%B3%B4%EC%9E%903)
+4. [Airflow를 활용해보자 4 — 데이터 검증과 품질 관리](https://velog.io/@daondakara/Airflow%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%B4%EB%B3%B4%EC%9E%904%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B2%80%EC%A6%9D%EA%B3%BC-%ED%92%88%EC%A7%88-%EA%B4%80%EB%A6%AC) — 불량 행 검증, Quality Check, 휴관일·이상값
