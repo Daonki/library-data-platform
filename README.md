@@ -87,5 +87,5 @@ Python · Apache Airflow 2.10 (TaskFlow API, LocalExecutor) · PostgreSQL 16 · 
 
 1. [Airflow를 활용해보자](https://velog.io/@daondakara/Airflow%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%B4%EB%B3%B4%EC%9E%90) — Airflow 개념, 만든 것, Docker Compose, DAG 구성
 2. [Airflow를 활용해보자 2 — 재시도부터 증분 적재까지](https://velog.io/@daondakara/Airflow%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%B4%EB%B3%B4%EC%9E%902%EC%9E%AC%EC%8B%9C%EB%8F%84%EB%B6%80%ED%84%B0-%EC%A6%9D%EB%B6%84-%EC%A0%81%EC%9E%AC%EA%B9%8C%EC%A7%80) — 재시도, catchup, 워터마크·중복 방지, 63시간 공백
-3. [Airflow를 활용해보자 3](https://velog.io/@daondakara/Airflow%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%B4%EB%B3%B4%EC%9E%903)
+3. [Airflow를 활용해보자 3](https://velog.io/@daondakara/Airflow%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%B4%EB%B3%B4%EC%9E%903) — Raw/Mart 설계와 스타 스키마, 복합 기본 키를 쓴 이유
 4. [Airflow를 활용해보자 4 — 데이터 검증과 품질 관리](https://velog.io/@daondakara/Airflow%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%B4%EB%B3%B4%EC%9E%904%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B2%80%EC%A6%9D%EA%B3%BC-%ED%92%88%EC%A7%88-%EA%B4%80%EB%A6%AC) — 불량 행 검증, Quality Check, 휴관일·이상값
